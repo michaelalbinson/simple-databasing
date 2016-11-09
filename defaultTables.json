@@ -1,0 +1,72 @@
+{
+	"0": {
+		"tablename": "post",
+		"fields": {
+			"content": "postText",
+			"id": "uniqueidentifier",
+			"owner": "string",
+			"upvotes": "mediumint",
+			"downvotes": "mediumint",
+			"answered": "boolean",
+			"timestamp": "datetime",
+			"tags": "string"
+		}
+	},
+
+	"1": {
+		"tablename": "comment",
+		"fields": {
+			"content": "commentText",
+			"id": "uniqueidentifier",
+			"owner": "string",
+			"upvotes": "mediumint",
+			"downvotes": "mediumint",
+			"isSolution": "boolean",
+			"commentLevel": "tinyint",
+			"parentPost": "uniqueidentifier",
+			"parentComment": "uniqueidentifier",
+			"timestamp": "datetime"
+		}
+	},
+
+	"2": {
+		"tablename": "user",
+		"fields": {
+			"netid": "string",
+			"upvotes": "mediumint",
+			"downvotes": "mediumint",
+			"reportCount": "string",
+			"id": "uniqueidentifier",
+			"dateJoined": "date"
+		}
+	},
+
+	"3": {
+		"tablename": "report",
+		"fields": {
+			"reportSummary": "string",
+			"report": "commentText",
+			"reportingUser": "string",
+			"reportedUser": "string",
+			"relatedCommentOrPostID": "uniqueidentifier",
+			"timestamp": "datetime"
+		}
+	},
+
+	"4": {
+		"tablename": "tags",
+		"fields": {
+			"name": "string",
+			"relatedTags": "string",
+			"id": "uniqueidentifier"
+		}
+	},
+	"5": {
+		"tablename": "vote",
+		"fields": {
+			"commentOrPostID": "uniqueidentifier",
+			"userID": "uniqueidentifier",
+			"voteInt": "tinyint" //voting system should be static on load and only refreshed on refresh (if voting occurs, vote should be incremented and POSTed, but page should not update)
+		}
+	}
+}
