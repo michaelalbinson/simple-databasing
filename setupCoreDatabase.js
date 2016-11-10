@@ -18,7 +18,6 @@ function createTable(tableName, fields) { //table name is a string, fields is a 
 			queryString += prop + ' ' + possibleTypes[fields[prop]] + ')';
 	}
 
-	console.log(queryString);
 	var q = new db.DatabaseQuery(queryString);
 	q.query();
 }
@@ -26,7 +25,5 @@ function createTable(tableName, fields) { //table name is a string, fields is a 
 var defaults = JSON.parse(fs.readFileSync('defaultTables.json', 'utf8')) 
 
 for (var prop in defaults){
-	console.log(defaults[prop]["tablename"])
-	console.log(defaults[prop]["fields"])
 	createTable(defaults[prop]["tablename"], defaults[prop]["fields"]);
 }

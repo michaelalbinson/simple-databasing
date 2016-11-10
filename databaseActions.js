@@ -41,16 +41,18 @@ exports.DatabaseQuery = function(queryString) { //if you want to use the result 
 
 /** DBRow
  ** This object is capable of querying the database to retrieve a row, or multiple rows, from the database
- ** The retrieved row(s) can be accessed using the obj.row property
+ ** The retrieved row(s) cannot be directly accessed, you must use obj.getValue
  ** If using the query() method you MUST use promises to make sure you have the row(s) before continuing
  ** If using the update() or insert() functionalities, promises do not need to be used
 **/
 exports.DBRow = function(table) {
 	var table;
-	var queryString;
-	this.row = undefined;
+	var queryString =  "SELECT * FROM " + table + ' ';
+	var specificQueries;
+	var row = undefined;
 
 	this.getRow = function(systemId) { //use a system id to get a row from a table immediately
+		queryString += "WHERE id= " + systemId;
 
 	}
 
@@ -58,12 +60,13 @@ exports.DBRow = function(table) {
 
 	}
 
-	this.addQuery = function(property, value) {
-
+	this.addQuery = function(property, value) { // with three arguments it will be interpreted as operator (OR, AND) property, value
+		if (!specificQueries)
+			specificQueries = 'WHERE ' + property +  '=' + value;
 	}
 
-	this.getValue = function(property) { //get the value of a 
-
+	this.getValue = function(property) { //get the value of a column for the row
+		return row[property];
 	}
 
 	this.setValue = function(property, value) {

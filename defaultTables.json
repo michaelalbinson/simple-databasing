@@ -49,7 +49,8 @@
 			"reportingUser": "string",
 			"reportedUser": "string",
 			"relatedCommentOrPostID": "uniqueidentifier",
-			"timestamp": "datetime"
+			"timestamp": "datetime",
+			"id": "uniqueidentifier"
 		}
 	},
 
@@ -66,7 +67,8 @@
 		"fields": {
 			"commentOrPostID": "uniqueidentifier",
 			"userID": "uniqueidentifier",
-			"voteInt": "tinyint" //voting system should be static on load and only refreshed on refresh (if voting occurs, vote should be incremented and POSTed, but page should not update)
-		}
+			"voteInt": "bool", //voting system should be static on load and only refreshed on refresh (if voting occurs, vote should be incremented and POSTed, but page should not update)
+			"id": "uniqueidentifier"
+		} // 1 is +1, 0 is -1, we will not record 0 votes
 	}
 }
