@@ -6,10 +6,3 @@
 **/
 
 var dbr = require('./util/DBRow');
-
-var db = new dbr.DBRow("post");
-
-
-db.getRow("id").then(function(row) {
-	console.log(row);
-})

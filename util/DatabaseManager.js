@@ -20,12 +20,12 @@ exports.DatabaseManager = function() {
 			pool.getConnection(function(err, connection) {
 				if (err) {
 					log.error(err.message);
-					reject(undefined);
+					reject(err);
 				}
 
 				connection.query(queryString, function(err, rows, fields) {
 					if (err){
-						reject(undefined);
+						reject(err);
 						log.error(err.message);
 						return;
 					}
