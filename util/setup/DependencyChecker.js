@@ -1,6 +1,6 @@
 "use strict";
 
-const dependencies = ['mysql', 'express', 'client-session'];
+const dependencies = ['mysql', 'express']; //'client-session' might need to be added
 
 exports.checkDependencies = function() {
 	console.log("~~~~~~~~~~~~~~~Module Check~~~~~~~~~~~~~~~~");
@@ -15,7 +15,7 @@ exports.checkDependencies = function() {
 		} 
 	}
 	logSummary(dependencies, modulesYouNeed);
-	console.log("~~~~~~~~~~~~~~~End Module Check~~~~~~~~~~~~~~~~");
+	console.log("~~~~~~~~~~~~~~~End Module Check~~~~~~~~~~~~~~~~\n\n");
 }
 
 function logSummary(dependencyList, modulesNotInstalled) {

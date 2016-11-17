@@ -3,12 +3,10 @@
 		"tablename": "post",
 		"fields": {
 			"content": {
-				"type": "postText",
-				"default": ""
+				"type": "postText"
 			},
 			"id": {
 				"type": "uniqueidentifier",
-				"default": "",
 				"primaryKey": "true"
 			},
 			"owner": {
@@ -25,15 +23,13 @@
 			},
 			"answered": {
 				"type": "boolean",
-				"default": "false"
-			},
-			"timestamp": {
-				"type": "datetime",
 				"default": "0"
 			},
+			"timestamp": {
+				"type": "datetime"
+			},
 			"tags": {
-				"type": "string",
-				"default": ""
+				"type": "string"
 			}
 		}
 	},
@@ -42,12 +38,10 @@
 		"tablename": "comment",
 		"fields": {
 			"content": {
-				"type": "commentText",
-				"default": ""
+				"type": "commentText"
 			},
 			"id": {
 				"type": "uniqueidentifier",
-				"default": "",
 				"primaryKey": "true"
 			},
 			"owner": {
@@ -64,23 +58,20 @@
 			},
 			"isSolution": {
 				"type": "boolean",
-				"default": "false"
+				"default": "0"
 			},
 			"commentLevel": {
 				"type": "tinyint",
 				"default": "0"
 			},
 			"parentPost": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
 			"parentComment": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
 			"timestamp": {
-				"type": "datetime",
-				"default": "0"
+				"type": "datetime"
 			}
 		}
 	},
@@ -89,12 +80,10 @@
 		"tablename": "user",
 		"fields": {
 			"netid": {
-				"type": "string",
-				"default": ""
+				"type": "string"
 			},
 			"username": {
-				"type": "string",
-				"default": ""
+				"type": "string"
 			},
 			"totalUpvotes": {
 				"type": "mediumint",
@@ -114,14 +103,12 @@
 			},
 			"id": {
 				"type": "uniqueidentifier",
-				"default": "",
 				"primaryKey": "true"
 			},
 			"dateJoined": {
-				"type": "date",
-				"default": "0"
+				"type": "date"
 			},
-			"privelages": {
+			"privilege": {
 				"type" : "string",
 				"default": "None"
 			}
@@ -132,32 +119,25 @@
 		"tablename": "report",
 		"fields": {
 			"reportSummary": {
-				"type": "string",
-				"default": ""
+				"type": "string"
 			},
 			"report": {
-				"type": "commentText",
-				"default": ""
+				"type": "commentText"
 			},
 			"reportingUser": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
 			"reportedUser": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
 			"relatedCommentOrPostID": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
 			"timestamp": {
-				"type": "datetime",
-				"default": "0"
+				"type": "datetime"
 			},
 			"id": {
 				"type": "uniqueidentifier",
-				"default": "",
 				"primaryKey": "true"
 			}
 		}
@@ -167,16 +147,13 @@
 		"tablename": "tag",
 		"fields": {
 			"name": {
-				"type": "string",
-				"default": ""
+				"type": "string"
 			},
 			"relatedTags": {
-				"type": "string",
-				"default": ""
+				"type": "string"
 			},
 			"id": {
 				"type": "uniqueidentifier",
-				"default": "",
 				"primaryKey": "true"
 			}
 		}
@@ -185,20 +162,16 @@
 		"tablename": "vote",
 		"fields": {
 			"commentOrPostID": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
 			"userID": {
-				"type": "uniqueidentifier",
-				"default": ""
+				"type": "uniqueidentifier"
 			},
-			"voteInt": {
-				"type": "bool",
-				"default": "false"
+			"vote": {
+				"type": "bool"
 			},
 			"id": {
 				"type": "uniqueidentifier",
-				"default": "",
 				"primaryKey": "true"
 			}
 		}
