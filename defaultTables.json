@@ -2,73 +2,205 @@
 	"0": {
 		"tablename": "post",
 		"fields": {
-			"content": "postText",
-			"id": "uniqueidentifier",
-			"owner": "string",
-			"upvotes": "mediumint",
-			"downvotes": "mediumint",
-			"answered": "boolean",
-			"timestamp": "datetime",
-			"tags": "string"
+			"content": {
+				"type": "postText",
+				"default": ""
+			},
+			"id": {
+				"type": "uniqueidentifier",
+				"default": "",
+				"primaryKey": "true"
+			},
+			"owner": {
+				"type":"string",
+				"default": "anon"
+			},
+			"upvotes": {
+				"type": "mediumint",
+				"default": "0"
+			},
+			"downvotes": {
+				"type": "mediumint",
+				"default": "0"
+			},
+			"answered": {
+				"type": "boolean",
+				"default": "false"
+			},
+			"timestamp": {
+				"type": "datetime",
+				"default": "0"
+			},
+			"tags": {
+				"type": "string",
+				"default": ""
+			}
 		}
 	},
 
 	"1": {
 		"tablename": "comment",
 		"fields": {
-			"content": "commentText",
-			"id": "uniqueidentifier",
-			"owner": "string",
-			"upvotes": "mediumint",
-			"downvotes": "mediumint",
-			"isSolution": "boolean",
-			"commentLevel": "tinyint",
-			"parentPost": "uniqueidentifier",
-			"parentComment": "uniqueidentifier",
-			"timestamp": "datetime"
+			"content": {
+				"type": "commentText",
+				"default": ""
+			},
+			"id": {
+				"type": "uniqueidentifier",
+				"default": "",
+				"primaryKey": "true"
+			},
+			"owner": {
+				"type": "string",
+				"default": "anon"
+			},
+			"upvotes": {
+				"type": "mediumint",
+				"default": "0"
+			},
+			"downvotes": {
+				"type": "mediumint",
+				"default": "0"
+			},
+			"isSolution": {
+				"type": "boolean",
+				"default": "false"
+			},
+			"commentLevel": {
+				"type": "tinyint",
+				"default": "0"
+			},
+			"parentPost": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"parentComment": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"timestamp": {
+				"type": "datetime",
+				"default": "0"
+			}
 		}
 	},
 
 	"2": {
 		"tablename": "user",
 		"fields": {
-			"netid": "string",
-			"upvotes": "mediumint",
-			"downvotes": "mediumint",
-			"reportCount": "string",
-			"id": "uniqueidentifier",
-			"dateJoined": "date"
+			"netid": {
+				"type": "string",
+				"default": ""
+			},
+			"username": {
+				"type": "string",
+				"default": ""
+			},
+			"totalUpvotes": {
+				"type": "mediumint",
+				"default": "0"
+			},
+			"totalDownvotes": {
+				"type": "mediumint",
+				"default": "0"
+			},
+			"totalSolved": {
+				"type": "tinyint",
+				"default": "0"
+			},
+			"reportCount": {
+				"type": "tinyint",
+				"default": "0"
+			},
+			"id": {
+				"type": "uniqueidentifier",
+				"default": "",
+				"primaryKey": "true"
+			},
+			"dateJoined": {
+				"type": "date",
+				"default": "0"
+			},
+			"privelages": {
+				"type" : "string",
+				"default": "None"
+			}
 		}
 	},
 
 	"3": {
 		"tablename": "report",
 		"fields": {
-			"reportSummary": "string",
-			"report": "commentText",
-			"reportingUser": "string",
-			"reportedUser": "string",
-			"relatedCommentOrPostID": "uniqueidentifier",
-			"timestamp": "datetime",
-			"id": "uniqueidentifier"
+			"reportSummary": {
+				"type": "string",
+				"default": ""
+			},
+			"report": {
+				"type": "commentText",
+				"default": ""
+			},
+			"reportingUser": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"reportedUser": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"relatedCommentOrPostID": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"timestamp": {
+				"type": "datetime",
+				"default": "0"
+			},
+			"id": {
+				"type": "uniqueidentifier",
+				"default": "",
+				"primaryKey": "true"
+			}
 		}
 	},
 
 	"4": {
-		"tablename": "tags",
+		"tablename": "tag",
 		"fields": {
-			"name": "string",
-			"relatedTags": "string",
-			"id": "uniqueidentifier"
+			"name": {
+				"type": "string",
+				"default": ""
+			},
+			"relatedTags": {
+				"type": "string",
+				"default": ""
+			},
+			"id": {
+				"type": "uniqueidentifier",
+				"default": "",
+				"primaryKey": "true"
+			}
 		}
 	},
 	"5": {
 		"tablename": "vote",
 		"fields": {
-			"commentOrPostID": "uniqueidentifier",
-			"userID": "uniqueidentifier",
-			"voteInt": "bool", //voting system should be static on load and only refreshed on refresh (if voting occurs, vote should be incremented and POSTed, but page should not update)
-			"id": "uniqueidentifier"
-		} // 1 is +1, 0 is -1, we will not record 0 votes
+			"commentOrPostID": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"userID": {
+				"type": "uniqueidentifier",
+				"default": ""
+			},
+			"voteInt": {
+				"type": "bool",
+				"default": "false"
+			},
+			"id": {
+				"type": "uniqueidentifier",
+				"default": "",
+				"primaryKey": "true"
+			}
+		}
 	}
 }

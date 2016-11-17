@@ -2,32 +2,40 @@
 
 var fs = require('fs');
 
-var config =  JSON.parse(fs.readFileSync('database.json', 'utf8'));
+var config =  JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
-var loggingShouldOccur = true; // switch to config["logging"] when working
+var loggingShouldOccur = (config["logging"] == 'true');
 
 exports.log = function(logString) {
 	var currentTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-	var logThis = currentTime + " :" + logString;
+	var logThis = currentTime + ": " + logString;
+	console.log(logThis);
 	if (loggingShouldOccur)
 		writeToFile(logThis);
-
 }
 
 exports.warn = function(logString) {
 	var currentTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 	var logThis = currentTime + " WARNING: " + logString;
+	console.warn(logThis);
 	if (loggingShouldOccur)
 		writeToFile(logThis);
-
 }
 
 exports.error = function(logString) {
 	var currentTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 	var logThis = currentTime + " ERROR: " + logString;
+	console.error(logThis);
 	if (loggingShouldOccur)
 		writeToFile(logThis);
+}
 
+exports.info = function(logString) {
+	var currentTime = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+	var logThis = currentTime + " INFO: " + logString;
+	console.log(logThis);
+	if (loggingShouldOccur)
+		writeToFile(logThis);
 }
 
 function writeToFile(logString) {
@@ -38,7 +46,8 @@ function writeToFile(logString) {
 	fs.open(logFileName, "a", function(err, fd) {
 		if (err){
 			fs.writeFile(logFileName, correctedString, {"flag": "wx"}, function(err){
-				console.log(err);
+				if (err)
+					console.log(err);
 			});
 			return;
 		}
@@ -49,7 +58,8 @@ function writeToFile(logString) {
 		});
 
 		fs.close(fd, function(err){
-			console.log(err);
+			if (err)
+				console.log(err);
 		});
 	});
 
